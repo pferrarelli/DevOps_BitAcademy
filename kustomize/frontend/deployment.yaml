@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: myapp
+  name: frontend
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - image: frontend_env:1.0.0
+        name: frontend
+        env:
+          - name: API_URL
+            valueFrom:
+              secretKeyRef:
+                name: frontend-secret
+                key: API_URL_SECRET
+        ports:
+        - name: frontend
+          containerPort: 4200
+        resources:
+          limits:
+            cpu: 90m
+            memory: 100Mi
+          requests:
+            cpu: 50m
+            memory: 100Mi

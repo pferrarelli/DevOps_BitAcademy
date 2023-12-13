@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: myapp
+  name: frontend-config
+data:
+  API_URL: http://localhost:8080/

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: myapp
+  name: mysql-config
+data:
+  MYSQL_ROOT_PASSWORD: admin123
